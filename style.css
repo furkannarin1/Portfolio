@@ -20,6 +20,7 @@ body {
 }
 
 
+
 .header {
     position: fixed;
     left: 0;
@@ -81,21 +82,52 @@ section {
 
 .btn {
     display: inline-block;
-    width: 200px; /* Adjust width as needed */
-    height: 50px; /* Adjust height as needed */
-    background-color: #007BFF; /* Blue background */
-    color: #ffffff; /* White text */
-    font-size: 16px; /* Adjust font size as needed */
-    text-align: center; /* Horizontally center the text */
-    line-height: 50px; /* Vertically center the text, match with button height */
-    border-radius: 25px; /* Rounded corners */
-    text-decoration: none; /* Remove underline from links */
-    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    width: 200px;
+    height: 50px;
+    background-color: #007BFF;
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    cursor: pointer;
 }
 
 .btn:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 
 
 .text-content {
@@ -374,6 +406,7 @@ p {
 
 
 
+/* Skills Section */
 .skill-container {
     display: flex;
     flex-wrap: wrap;
@@ -383,35 +416,35 @@ p {
 }
 
 .skill-card {
-    flex: 1 1 20%; /* Adjust the width for smaller screens if necessary */
-    background-color: #ffffff; /* White background */
-    border: 2px solid #007BFF; /* Blue borders */
+    flex: 1 1 20%;
+    background-color: #ffffff;
+    border: 2px solid #007BFF;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s ease-in-out;
 }
 
 .skill-card:hover {
-    transform: scale(1.05); /* Slight scale effect on hover */
+    transform: scale(1.05);
 }
 
 .skill-card h4 {
-    color: #007BFF; /* Blue text for headings */
-    font-size: 2.4rem; /* Increased font size for better readability */
-    font-weight: 600; /* Bolder font for more emphasis */
-    margin-bottom: 15px; /* Increased spacing below the title for better visual separation */
+    color: #007BFF;
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-bottom: 15px;
 }
 
 .skill-card ul {
-    list-style: none; /* Remove default list styling */
+    list-style: none;
     padding: 0;
 }
 
 .skill-card li {
     font-size: 1.6rem;
-    color: #424242; /* Gray text for list items */
-    padding: 5px 0; /* Padding for spacing */
+    color: #424242;
+    padding: 5px 0;
 }
 
 @media (max-width: 768px) {
@@ -421,9 +454,102 @@ p {
     }
 
     .skill-card {
-        flex-basis: 80%; /* Makes cards wider on smaller screens */
+        flex-basis: 80%;
     }
 }
+
+/* Carousel Styles */
+.software-skills {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.software-skills h4 {
+    font-size: 4rem;
+    color: #007BFF;
+    margin-bottom: 1rem;
+}
+
+.carousel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    width: 80%;
+    margin: auto;
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    animation: scroll 30s linear infinite; /* Adjust the duration for speed */
+}
+
+.carousel-item {
+    display: inline-block;
+    margin: 0 50px; /* Increased spacing between logos */
+}
+
+.carousel-item img {
+    max-width: 100px;
+    max-height: 100px; /* Ensure the logos fit within a square */
+    width: auto;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-top: 1rem;
+}
+
+.carousel-prev,
+.carousel-next {
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background-color: #0056b3;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(60%);
+        opacity: 0; /* Start fully transparent */
+    }
+    10% {
+        opacity: 1; /* Fade in */
+    }
+    90% {
+        opacity: 1; /* Keep fully visible for most of the scroll */
+    }
+    100% {
+        transform: translateX(calc(-100% - 60px));
+        opacity: 0; /* Fade out */
+    }
+}
+
+
+
+.carousel-container:hover .carousel {
+    animation-play-state: paused;
+}
+
+
+
+
+
 
 
 .row {
@@ -474,6 +600,8 @@ p {
 
 .modal {
     display: none;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -486,11 +614,34 @@ p {
 
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto;
+    margin: 5% auto; /* Réduit le margin pour plus d'espace */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 80%; /* Augmente la largeur de la modale */
+    max-width: 1000px; /* Largeur maximale augmentée */
+    max-height: 90vh; /* Assure que la modale ne dépasse pas la hauteur de l'écran */
+    overflow-y: auto; /* Ajoute un défilement si le contenu dépasse la hauteur */
 }
+
+.modal-content p {
+    font-size: 1.4rem; /* Augmente encore la taille de la police */
+    line-height: 1.6; /* Assure une bonne lisibilité */
+}
+
+.modal-content h2 {
+    font-size: 2.2rem; /* Augmente encore la taille de la police du titre */
+}
+
+.modal-content img.modal-image {
+    max-width: 100%; /* L'image occupe toute la largeur disponible */
+    height: auto; /* Maintient les proportions de l'image */
+    margin: 20px 0; /* Ajoute un espace autour de l'image */
+    display: block; /* Assure que l'image prend toute la largeur disponible */
+    box-sizing: border-box; /* Assure que le padding et la bordure sont inclus dans la taille totale */
+}
+
+
+
 
 .close {
     color: #aaaaaa;
@@ -583,6 +734,212 @@ footer i{
     border-radius: 50%;
     font-size: 2.4rem;
 }
+
+.contact-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #007BFF; /* Blue background */
+    color: #ffffff; /* White icon color */
+    padding: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-size: 2.4rem;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.contact-icon:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.1); /* Slightly larger on hover */
+}
+
+.contact-info {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background-color: #ffffff; /* White background */
+    color: #333; /* Default text color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    max-width: 300px;
+    animation: fadeIn 0.5s;
+}
+
+.contact-info .contact-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.contact-info h4 {
+    margin-top: 0;
+    color: #007BFF; /* Blue heading */
+    font-size: 1.8rem;
+}
+
+.contact-info .close {
+    color: #aaa;
+    font-size: 1.8rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.contact-info .close:hover {
+    color: #000;
+}
+
+.contact-info p {
+    margin: 10px 0;
+}
+
+.contact-info .social-media {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.contact-info .social-media a {
+    color: #007BFF; /* Blue icons */
+    font-size: 2rem;
+    transition: color 0.3s;
+}
+
+.contact-info .social-media a:hover {
+    color: #0056b3; /* Darker blue on hover */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 50px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 5px 10px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.flag {
+    width: 20px;
+    height: auto;
+    margin: 0 5px;
+}
+
+.modal-content img {
+    max-width: 100%; /* Ensures image doesn't exceed modal width */
+    height: auto; /* Maintains aspect ratio */
+    display: block;
+    margin: 20px auto; /* Centers the image within the modal */
+}
+
+.sub-filter-buttons {
+    display: none;
+    margin-top: 10px;
+}
+
+.sub-filter-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.sub-filter-btn:hover {
+    background-color: #0056b3;
+}
+
+.filter-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.filter-btn:hover {
+    background-color: #0056b3;
+}
+
+.filter-btn.active, .sub-filter-btn.active {
+    background-color: #0056b3;
+}
+
+.images-container {
+    display: flex;
+    gap: 10px; /* Ajoutez un espace entre les images, ajustez selon vos besoins */
+}
+
+.images-container img {
+    max-width: 100%; /* Pour que les images ne dépassent pas la largeur du conteneur */
+    height: auto; /* Pour maintenir les proportions des images */
+}
+
+.highlight-list {
+    font-size: 1.2em; /* Augmente la taille de la police */
+    line-height: 1.5em; /* Augmente l'espacement entre les lignes */
+    margin: 20px 0; /* Ajoute un espace vertical autour de la liste */
+    padding-left: 20px; /* Ajoute un espace à gauche de la liste */
+}
+
+.highlight-list li {
+    margin-bottom: 10px; /* Ajoute un espace entre les éléments de la liste */
+}
+
+
+
+
 
 /* RESPONSIVE */
 
@@ -684,7 +1041,3 @@ footer i{
         width: 32rem;
     }
 }
-
-
-
-
