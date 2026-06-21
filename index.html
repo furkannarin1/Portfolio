@@ -35,7 +35,7 @@
     <section class="home" id="home">
         <div class="text-content">
             <h2>Furkan Narin</h2>
-            <h5>Data Manager</h5>
+            <h5>Data Scientist &mdash; <span style="color:#4a8fd4;">En recherche d'alternance</span></h5>
             <div class="social-media">
             </div>
 
@@ -51,7 +51,7 @@
     <div class="about-img-cover">
         <div class="image-content">
             <h2>Furkan Narin</h2>
-            <h5>Data Manager</h5>
+            <h5>Data Scientist &mdash; En recherche d'alternance</h5>
             <img src="image/preuve/MdSay.png" alt="Furkan Narin">
         </div>
     </div>
@@ -81,7 +81,15 @@
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="date">2023-2025 (En cours)</div>
+                    <div class="date">2025-2027 (En cours)</div>
+                    <h3>Master Informatique — Machine Learning pour la Science des Données</h3>
+                    <p>En recherche d'alternance<br>Rythme : 3j école / 2j entreprise (oct–avr) · 100 % entreprise en M2<br><a href="https://u-paris.fr/" target="_blank">Université Paris Cité</a></p>
+                    <a href="https://u-paris.fr/" target="_blank" class="more-info">Visiter le site</a>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="date">2023-2025</div>
                     <h3>Apprenti Data Manager</h3>
                     <p>Gestion des bases de données de la Cellule Bâti Scolaire<br>Ministère de l'Éducation Nationale</p>
                     <a href="https://www.education.gouv.fr/" target="_blank" class="more-info">Visiter le site</a>
@@ -89,7 +97,7 @@
             </div>
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="date">2022-2025 (En cours)</div>
+                    <div class="date">2022-2025</div>
                     <h3>BUT Science des Données (ex STID)</h3>
                     <p>Parcours VCOD en alternance<br>IUT Paris - Rives de Seine</p>
                     <a href="https://www.iut.parisdescartes.fr/" target="_blank" class="more-info">Visiter le site</a>
@@ -224,6 +232,7 @@
         <div class="sub-filter-buttons">
             <button class="sub-filter-btn" data-filter="premiere-annee">Première année</button>
             <button class="sub-filter-btn" data-filter="deuxieme-annee">Deuxième année</button>
+            <button class="sub-filter-btn" data-filter="master">Master</button>
         </div>
     </div>
     
@@ -283,6 +292,34 @@
                         <p>Étude détaillée pour déterminer le type d’entreprises bénéficiant du PGE durant la crise sanitaire.</p>
                     </div>
                 </div>
+
+
+        <!-- Project 7 – Financial Scraper -->
+        <div class="project-card formation master" onclick="openModal('modal7')" data-category="formation">
+            <img src="image/preuve/imgProjet7.png" alt="Financial Scraper">
+            <div class="project-info">
+                <h4>Financial Scraper — Agent IA d'analyse financière</h4>
+                <p>Plateforme d'analyse boursière propulsée par un agent LangChain (DeepSeek LLM), déployée sur Kubernetes.</p>
+            </div>
+        </div>
+
+        <!-- Project 8 – City Fighting -->
+        <div class="project-card formation master" onclick="openModal('modal8')" data-category="formation">
+            <img src="image/preuve/imgProjet8.png" alt="City Fighting">
+            <div class="project-info">
+                <h4>Outil de comparaison de villes — City Fighting</h4>
+                <p>Application web Python/Streamlit comparant les communes françaises via des données issues d'API publiques.</p>
+            </div>
+        </div>
+
+        <!-- Project 9 – Automatisation surfaces -->
+        <div class="project-card entreprise" onclick="openModal('modal9')" data-category="entreprise">
+            <img src="image/preuve/imgProjet9.png" alt="Automatisation surfaces scolaires">
+            <div class="project-info">
+                <h4>Automatisation de récupération des surfaces d'établissements scolaires</h4>
+                <p>Pipeline Python automatisé pour extraire les superficies de 42 724 établissements scolaires — Ministère de l'Éducation Nationale.</p>
+            </div>
+        </div>
 
     </div>
 
@@ -415,6 +452,66 @@
                 <button onclick="window.open('https://furkannarin.shinyapps.io/Reporting_Azek_Narin/', '_blank')">Ouvrir le livrable</button>
             </div>
         </div>
+
+    <!-- Modal 7 – Financial Scraper -->
+    <div id="modal7" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal7')">&times;</span>
+            <h2>Financial Scraper — Plateforme d'analyse financière pilotée par IA</h2>
+            <p><strong>Contexte :</strong> Projet réalisé en binôme dans le cadre du cours Programmation Distribuée (Master, Université Paris Cité). Financial Scraper est une plateforme d'analyse financière propulsée par un agent IA conversationnel.</p>
+            <p><strong>Objectifs :</strong> Permettre à un utilisateur de poser des questions en langage naturel — par exemple « Montre-moi les données IBM du 5 janvier 2025 » — et obtenir automatiquement des données boursières, des analyses techniques et des prévisions.</p>
+            <p><strong>Architecture :</strong></p>
+            <ul class="highlight-list">
+                <li><strong>API Gateway (FastAPI)</strong> — orchestre l'agent IA (LangChain + DeepSeek LLM) et communique via gRPC</li>
+                <li><strong>ScraperService</strong> — récupère les données boursières en temps réel (API Alpha Vantage)</li>
+                <li><strong>AnalysisService</strong> — prévisions ARIMA, indicateurs RSI, MACD, Bandes de Bollinger, MA5/MA20</li>
+                <li><strong>PostgreSQL</strong> — mémoire conversationnelle persistée</li>
+                <li><strong>Kubernetes</strong> — déploiement cloud-ready (GKE / AKS / EKS), sécurisation RBAC + Istio mTLS</li>
+            </ul>
+            <p><strong>Fonctionnalités clés :</strong> Streaming des réponses token par token via Server-Sent Events, mémoire conversationnelle multi-tours, interface web en français.</p>
+            <p><strong>Compétences développées :</strong> Python, FastAPI, LangChain, Docker, Kubernetes, gRPC, PostgreSQL, ARIMA, sécurité applicative.</p>
+            <p><strong>Repo :</strong> <a href="https://github.com/JinyuCong/Financial-Scraper-Agent" target="_blank">github.com/JinyuCong/Financial-Scraper-Agent</a></p>
+            <p><strong>Lieu :</strong> <i class='bx bx-map'></i> Université Paris Cité — Master Informatique</p>
+        </div>
+    </div>
+
+    <!-- Modal 8 – City Fighting -->
+    <div id="modal8" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal8')">&times;</span>
+            <h2>Outil de comparaison de villes — City Fighting</h2>
+            <p><strong>Contexte :</strong> Projet réalisé en équipe de 3 dans le cadre de l'IUT Paris Rives de Seine (avril 2025). L'objectif était de concevoir une application web interactive à partir de données issues d'API publiques.</p>
+            <p><strong>Objectifs :</strong> Permettre la comparaison de communes françaises selon plusieurs dimensions : démographie, climat, économie, culture, formation.</p>
+            <p><strong>Démarche :</strong></p>
+            <ul class="highlight-list">
+                <li>Requêtage et intégration de données issues d'API publiques ouvertes</li>
+                <li>Construction d'une application web Python / Streamlit déployée sur GitHub</li>
+                <li>Visualisations : cartes interactives Folium, graphiques comparatifs dynamiques</li>
+            </ul>
+            <p><strong>Résultats :</strong> Application fonctionnelle permettant de comparer n'importe quelle paire de communes sur une interface intuitive.</p>
+            <p><strong>Compétences développées :</strong> Python, Streamlit, Folium, APIs publiques, travail en équipe, vision produit.</p>
+            <p><strong>Lieu :</strong> <i class='bx bx-map'></i> 143 Av. de Versailles, 75016 Paris — <a href="https://www.iut.parisdescartes.fr/" target="_blank">IUT Paris – Rives de Seine</a></p>
+        </div>
+    </div>
+
+    <!-- Modal 9 – Automatisation surfaces -->
+    <div id="modal9" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal9')">&times;</span>
+            <h2>Automatisation de récupération des surfaces d'établissements scolaires</h2>
+            <p><strong>Contexte :</strong> Projet réalisé en juillet 2025 au sein de la cellule Bâti Scolaire du Ministère de l'Éducation Nationale, dans le cadre de mon alternance.</p>
+            <p><strong>Objectifs :</strong> Obtenir automatiquement la superficie de 42 724 établissements scolaires à partir de sources hétérogènes (fichiers JSON et CSV), afin d'alimenter la base de données nationale du Bâti Scolaire.</p>
+            <p><strong>Démarche :</strong></p>
+            <ul class="highlight-list">
+                <li>Extraction et traitement automatisé des données de 42 724 établissements</li>
+                <li>Pipeline Python + Git Bash + JQ (traitement JSON) pour l'extraction des superficies</li>
+                <li>Consolidation et chargement dans la base de données Excel centralisée</li>
+            </ul>
+            <p><strong>Résultats :</strong> Pipeline entièrement automatisé, réduisant de plusieurs semaines le temps de traitement manuel. Données intégrées à la base nationale du recensement scolaire.</p>
+            <p><strong>Compétences développées :</strong> Python, Git Bash, JQ (JSON), Excel, automatisation de pipeline de données, gestion de fichiers volumineux.</p>
+            <p><strong>Lieu :</strong> <i class='bx bx-map'></i> Ministère de l'Éducation Nationale — <a href="https://batiscolaire.education.gouv.fr/" target="_blank">Cellule Bâti Scolaire</a></p>
+        </div>
+    </div>
 
     
     
